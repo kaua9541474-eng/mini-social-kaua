@@ -1,8 +1,50 @@
-let likeCount = 0;
+ //=== ESTADO (dados da aplicação) ===
 
+let likeCount = 0;
+let curtido = false; // flag booleana
+let deslikeCount = 0;
+let descurtido = false;
+
+ // === SERVICE (regras de negócio) ===
+// função de curtir
 function curtir() {
-  likeCount++;
-  document.getElementById("likeCount").innerText = likeCount;
+
+if(curtido == false){
+   likeCount++;
+   curtido = true;
+} else{
+   likeCount--;
+   curtido = false;
 }
 
+document.getElementById("likeCount").innerText = likeCount;
+}
+
+// função de descurtir
+function descurtir(){
+
+if(descurtido == false){
+   deslikeCount++;
+   descurtido = true;
+} else{
+   deslikeCount--;
+   descurtido = false;
+}
+
+document.getElementById("deslikeCount").innerText = deslikeCount;
+}
+
+
+// === CONTROLER (intermediação)===
+
+function clicarCurtir(){
+  curtir();
+}
+
+function clicarCurtir(){
+  descurtir();
+}
+
+// === EVENTOS ===
 document.getElementById("likeBtn").addEventListener("click", curtir);
+document.getElementById("deslikeBtn").addEventListener("click", descurtir);
